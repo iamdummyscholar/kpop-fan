@@ -373,35 +373,41 @@ class DashboardPage extends StatelessWidget {
         color: bgColor,
         borderRadius: BorderRadius.circular(16),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: iconColor.withValues(alpha: 0.15),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Icon(icon, color: iconColor, size: 22),
+      child: Row(     
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded( 
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                value,
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: AppTheme.darkPurple,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                title,
+                style: const TextStyle(fontSize: 12, color: AppTheme.textLight),
+              ),
+            ],
           ),
-          const SizedBox(height: 12),
-          Text(
-            value,
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: AppTheme.darkPurple,
-            ),
+        ),
+        Container(                       // <-- Icon on the right
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: iconColor.withValues(alpha: 0.15),
+            borderRadius: BorderRadius.circular(10),
           ),
-          const SizedBox(height: 4),
-          Text(
-            title,
-            style: const TextStyle(fontSize: 12, color: AppTheme.textLight),
-          ),
-        ],
-      ),
-    );
-  }
+          child: Icon(icon, color: iconColor, size: 22),
+        ),
+      ],
+    ),
+  );
+}
 
   Widget _buildTrendingCard(int index) {
     final names = ['Jennie', 'Jungkook', 'Karina', 'Felix', 'Wonyoung', 'V'];
