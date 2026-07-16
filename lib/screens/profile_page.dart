@@ -28,7 +28,6 @@ class ProfilePage extends StatelessWidget {
                         end: Alignment.bottomCenter,
                         colors: [
                           Colors.transparent,
-                          // ✅ FIXED
                           Colors.black.withValues(alpha: 0.7),
                         ],
                       ),
@@ -54,7 +53,6 @@ class ProfilePage extends StatelessWidget {
                           'BTS • Main Vocalist, Lead Dancer, Maknae',
                           style: TextStyle(
                             fontSize: 16,
-                            // ✅ FIXED
                             color: Colors.white.withValues(alpha: 0.9),
                           ),
                         ),
@@ -67,7 +65,6 @@ class ProfilePage extends StatelessWidget {
             leading: Container(
               margin: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                // ✅ FIXED
                 color: Colors.black.withValues(alpha: 0.38),
                 shape: BoxShape.circle,
               ),
@@ -80,7 +77,6 @@ class ProfilePage extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  // ✅ FIXED
                   color: Colors.black.withValues(alpha: 0.38),
                   shape: BoxShape.circle,
                 ),
@@ -172,7 +168,6 @@ class ProfilePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: [
                         BoxShadow(
-                          // ✅ FIXED
                           color: Colors.black.withValues(alpha: 0.08),
                           blurRadius: 12,
                           offset: const Offset(0, 6),
@@ -298,7 +293,6 @@ class ProfilePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            // ✅ FIXED
             color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 8,
             offset: const Offset(0, 4),

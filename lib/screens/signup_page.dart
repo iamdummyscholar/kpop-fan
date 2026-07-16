@@ -10,14 +10,11 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  // ─── CONTROLLERS ───
-  // One controller for each text field
   late final TextEditingController _nameController;
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
   late final TextEditingController _confirmPasswordController;
 
-  // ─── STATE VARIABLES ───
   bool _obscurePassword = true;
   bool _obscureConfirmPassword = true;
   bool _agreeToTerms = false;
@@ -49,8 +46,6 @@ class _SignUpPageState extends State<SignUpPage> {
         child: Container(
           width: double.infinity,
           height: MediaQuery.of(context).size.height,
-
-          // Same purple gradient as login page — consistent theme
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
@@ -66,8 +61,6 @@ class _SignUpPageState extends State<SignUpPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 20),
-
-                  // ─── BACK BUTTON + TITLE ROW ───
                   Row(
                     children: [
                       // Back button to return to login
@@ -82,7 +75,6 @@ class _SignUpPageState extends State<SignUpPage> {
                             color: Colors.white,
                           ),
                           onPressed: () {
-                            // Navigator.pop() = go back to previous page (Login)
                             Navigator.pop(context);
                           },
                         ),
@@ -103,7 +95,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                   const SizedBox(height: 30),
 
-                  // ─── WHITE SIGN UP CARD ───
+                  // SIGN UP CARD
                   Container(
                     padding: const EdgeInsets.all(28),
                     decoration: BoxDecoration(
@@ -121,7 +113,6 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // ─── HEADER TEXT ───
                         const Text(
                           'Join K-Star Connect',
                           style: TextStyle(
@@ -143,7 +134,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                         const SizedBox(height: 24),
 
-                        // ─── FULL NAME FIELD ───
+                        //FULL NAME FIELD
                         TextField(
                           controller: _nameController,
                           decoration: InputDecoration(
@@ -167,7 +158,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                         const SizedBox(height: 16),
 
-                        // ─── EMAIL FIELD ───
+                        //EMAIL FIELD
                         TextField(
                           controller: _emailController,
                           keyboardType: TextInputType.emailAddress,
@@ -192,7 +183,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                         const SizedBox(height: 16),
 
-                        // ─── PASSWORD FIELD ───
+                        // PASSWORD FIELD
                         TextField(
                           controller: _passwordController,
                           obscureText: _obscurePassword,
@@ -230,7 +221,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                         const SizedBox(height: 16),
 
-                        // ─── CONFIRM PASSWORD FIELD ───
+                        // CONFIRM PASSWORD FIELD
                         TextField(
                           controller: _confirmPasswordController,
                           obscureText: _obscureConfirmPassword,
@@ -269,7 +260,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                         const SizedBox(height: 16),
 
-                        // ─── TERMS & CONDITIONS CHECKBOX ───
+                        // TERMS & CONDITIONS CHECKBOX
                         Row(
                           children: [
                             SizedBox(
@@ -303,8 +294,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                         const SizedBox(height: 24),
 
-                        // ─── SIGN UP BUTTON ───
-                        // Navigates to MainScreen (no actual registration)
+                        // SIGN UP BUTTON
                         SizedBox(
                           width: double.infinity,
                           height: 52,
@@ -342,7 +332,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                         const SizedBox(height: 20),
 
-                        // ─── ALREADY HAVE ACCOUNT? ───
+                        // ALREADY HAVE ACCOUNT?
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

@@ -3,7 +3,6 @@ import '../theme/app_theme.dart';
 import 'main_screen.dart';
 import 'signup_page.dart';
 
-
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -12,8 +11,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  
-  // Only keep state for UI toggles (checkbox, password visibility)
   bool _rememberMe = false;
   bool _obscurePassword = true;
 
@@ -29,10 +26,7 @@ class _LoginPageState extends State<LoginPage> {
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [
-                AppTheme.primaryPurple,
-                AppTheme.darkPurple,
-              ],
+              colors: [AppTheme.primaryPurple, AppTheme.darkPurple],
             ),
           ),
           child: SafeArea(
@@ -42,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 40),
-                  
+
                   // Logo
                   Container(
                     width: 100,
@@ -64,9 +58,9 @@ class _LoginPageState extends State<LoginPage> {
                       color: AppTheme.primaryPurple,
                     ),
                   ),
-                  
+
                   const SizedBox(height: 24),
-                  
+
                   // App Name
                   const Text(
                     'K-Star Connect',
@@ -77,9 +71,9 @@ class _LoginPageState extends State<LoginPage> {
                       letterSpacing: 1.5,
                     ),
                   ),
-                  
+
                   const SizedBox(height: 8),
-                  
+
                   // Tagline
                   const Text(
                     'Discover. Connect. Stan.',
@@ -89,10 +83,10 @@ class _LoginPageState extends State<LoginPage> {
                       letterSpacing: 2,
                     ),
                   ),
-                  
+
                   const SizedBox(height: 50),
-                  
-                  // White Login Card
+
+                  //Login Card
                   Container(
                     padding: const EdgeInsets.all(28),
                     decoration: BoxDecoration(
@@ -126,13 +120,13 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         const SizedBox(height: 24),
-                        
-                        // Email Field — NO controller
+
+                        // Email
                         TextField(
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
                             labelText: 'Email',
-                            
+
                             prefixIcon: const Icon(
                               Icons.email_outlined,
                               color: AppTheme.primaryPurple,
@@ -149,10 +143,10 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                         ),
-                        
+
                         const SizedBox(height: 16),
-                        
-                        // Password Field — NO controller
+
+                        // Password
                         TextField(
                           obscureText: _obscurePassword,
                           decoration: InputDecoration(
@@ -186,9 +180,9 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                         ),
-                        
+
                         const SizedBox(height: 16),
-                        
+
                         // Remember Me & Forgot Password
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -234,10 +228,10 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ],
                         ),
-                        
+
                         const SizedBox(height: 24),
-                        
-                        // Login Button — Navigates to MainScreen
+
+                        // Login Button
                         SizedBox(
                           width: double.infinity,
                           height: 52,
@@ -257,7 +251,9 @@ class _LoginPageState extends State<LoginPage> {
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               elevation: 4,
-                              shadowColor: AppTheme.primaryPurple.withValues(alpha: 0.4),
+                              shadowColor: AppTheme.primaryPurple.withValues(
+                                alpha: 0.4,
+                              ),
                             ),
                             child: const Text(
                               'Login',
@@ -269,9 +265,9 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                         ),
-                        
+
                         const SizedBox(height: 20),
-                        
+
                         // Sign Up
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -306,7 +302,7 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                   ),
-                  
+
                   const SizedBox(height: 30),
                 ],
               ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:kpop_fan_app/screens/login_page.dart';
 import '../theme/app_theme.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -11,8 +12,6 @@ class DashboardPage extends StatelessWidget {
       backgroundColor: const Color(0xFFF5F6FA),
       body: CustomScrollView(
         slivers: [
-          
-          // Purple Header
           SliverToBoxAdapter(
             child: Container(
               padding: const EdgeInsets.all(20),
@@ -20,10 +19,7 @@ class DashboardPage extends StatelessWidget {
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: [
-                    AppTheme.primaryPurple,
-                    AppTheme.darkPurple,
-                  ],
+                  colors: [AppTheme.primaryPurple, AppTheme.darkPurple],
                 ),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(30),
@@ -50,7 +46,6 @@ class DashboardPage extends StatelessWidget {
                           const SizedBox(height: 4),
                           Text(
                             'Keep stanning and discover new idols.',
-                            // ✅ FIXED: withOpacity → withValues(alpha: ...)
                             style: TextStyle(
                               fontSize: 14,
                               color: Colors.white.withValues(alpha: 0.85),
@@ -62,18 +57,27 @@ class DashboardPage extends StatelessWidget {
                         width: 50,
                         height: 50,
                         decoration: BoxDecoration(
-                          // ✅ FIXED
                           color: Colors.white.withValues(alpha: 0.2),
                           shape: BoxShape.circle,
                           border: Border.all(
-                            // ✅ FIXED
                             color: Colors.white.withValues(alpha: 0.3),
                             width: 2,
                           ),
                         ),
-                        child: const Icon(
-                          Icons.notifications_outlined,
-                          color: Colors.white,
+                        child: IconButton(
+                          icon: const Icon(
+                            Icons.logout,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const LoginPage(),
+                              ),
+                              (route) => false,
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -82,11 +86,11 @@ class DashboardPage extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     decoration: BoxDecoration(
-                      // ✅ FIXED
                       color: Colors.white.withValues(alpha: 0.2),
                       borderRadius: BorderRadius.circular(14),
-                      // ✅ FIXED
-                      border: Border.all(color: Colors.white.withValues(alpha: 0.24)),
+                      border: Border.all(
+                        color: Colors.white.withValues(alpha: 0.24),
+                      ),
                     ),
                     child: const Row(
                       children: [
@@ -99,7 +103,9 @@ class DashboardPage extends StatelessWidget {
                               hintText: 'Search idols, groups...',
                               hintStyle: TextStyle(color: Colors.white60),
                               border: InputBorder.none,
-                              contentPadding: EdgeInsets.symmetric(vertical: 14),
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: 14,
+                              ),
                             ),
                           ),
                         ),
@@ -111,7 +117,7 @@ class DashboardPage extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Stats Overview
           SliverToBoxAdapter(
             child: Padding(
@@ -143,15 +149,21 @@ class DashboardPage extends StatelessWidget {
                     children: [
                       Expanded(
                         child: _buildStatCard(
-                          'Total Idols', '156', Icons.people,
-                          const Color(0xFF6C5CE7), const Color(0xFFE8E0FE),
+                          'Total Idols',
+                          '156',
+                          Icons.people,
+                          const Color(0xFF6C5CE7),
+                          const Color(0xFFE8E0FE),
                         ),
                       ),
                       const SizedBox(width: 12),
                       Expanded(
                         child: _buildStatCard(
-                          'Groups', '42', Icons.groups,
-                          const Color(0xFF00D2D3), const Color(0xFFD0F5F5),
+                          'Groups',
+                          '42',
+                          Icons.groups,
+                          const Color(0xFF00D2D3),
+                          const Color(0xFFD0F5F5),
                         ),
                       ),
                     ],
@@ -161,15 +173,21 @@ class DashboardPage extends StatelessWidget {
                     children: [
                       Expanded(
                         child: _buildStatCard(
-                          'Photocards', '1,240', Icons.photo_library,
-                          const Color(0xFFFF6B6B), const Color(0xFFFFE0E0),
+                          'Photocards',
+                          '1,240',
+                          Icons.photo_library,
+                          const Color(0xFFFF6B6B),
+                          const Color(0xFFFFE0E0),
                         ),
                       ),
                       const SizedBox(width: 12),
                       Expanded(
                         child: _buildStatCard(
-                          'New This Week', '8', Icons.new_releases,
-                          const Color(0xFFFFA502), const Color(0xFFFFF3E0),
+                          'New This Week',
+                          '8',
+                          Icons.new_releases,
+                          const Color(0xFFFFA502),
+                          const Color(0xFFFFF3E0),
                         ),
                       ),
                     ],
@@ -178,7 +196,7 @@ class DashboardPage extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Trending Idols
           SliverToBoxAdapter(
             child: Padding(
@@ -188,10 +206,7 @@ class DashboardPage extends StatelessWidget {
                 children: [
                   const Text(
                     'Trending Idols',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 12),
                   SizedBox(
@@ -208,7 +223,7 @@ class DashboardPage extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Bar Chart
           SliverToBoxAdapter(
             child: Padding(
@@ -218,10 +233,7 @@ class DashboardPage extends StatelessWidget {
                 children: [
                   const Text(
                     'Popularity Trends',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 12),
                   Container(
@@ -232,7 +244,6 @@ class DashboardPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: [
                         BoxShadow(
-                          // ✅ FIXED
                           color: Colors.black.withValues(alpha: 0.05),
                           blurRadius: 10,
                           offset: const Offset(0, 5),
@@ -250,8 +261,16 @@ class DashboardPage extends StatelessWidget {
                             sideTitles: SideTitles(
                               showTitles: true,
                               getTitlesWidget: (value, meta) {
-                                final names = ['Jennie', 'Jungkook', 'Karina', 'Felix', 'Wonyoung', 'V'];
-                                if (value.toInt() >= 0 && value.toInt() < names.length) {
+                                final names = [
+                                  'Jennie',
+                                  'Jungkook',
+                                  'Karina',
+                                  'Felix',
+                                  'Wonyoung',
+                                  'V',
+                                ];
+                                if (value.toInt() >= 0 &&
+                                    value.toInt() < names.length) {
                                   return Padding(
                                     padding: const EdgeInsets.only(top: 8),
                                     child: Text(
@@ -306,7 +325,7 @@ class DashboardPage extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Progress Indicators
           SliverToBoxAdapter(
             child: Padding(
@@ -316,16 +335,21 @@ class DashboardPage extends StatelessWidget {
                 children: [
                   const Text(
                     'Top Groups Activity',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 12),
                   _buildProgressItem('BTS', 0.95, const Color(0xFF6C5CE7)),
-                  _buildProgressItem('BLACKPINK', 0.88, const Color(0xFFFF6B6B)),
+                  _buildProgressItem(
+                    'BLACKPINK',
+                    0.88,
+                    const Color(0xFFFF6B6B),
+                  ),
                   _buildProgressItem('TWICE', 0.75, const Color(0xFF00D2D3)),
-                  _buildProgressItem('Stray Kids', 0.68, const Color(0xFFFFA502)),
+                  _buildProgressItem(
+                    'Stray Kids',
+                    0.68,
+                    const Color(0xFFFFA502),
+                  ),
                   const SizedBox(height: 20),
                 ],
               ),
@@ -336,8 +360,13 @@ class DashboardPage extends StatelessWidget {
     );
   }
 
-  Widget _buildStatCard(String title, String value, IconData icon,
-      Color iconColor, Color bgColor) {
+  Widget _buildStatCard(
+    String title,
+    String value,
+    IconData icon,
+    Color iconColor,
+    Color bgColor,
+  ) {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -350,7 +379,6 @@ class DashboardPage extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              // ✅ FIXED
               color: iconColor.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(10),
             ),
@@ -368,10 +396,7 @@ class DashboardPage extends StatelessWidget {
           const SizedBox(height: 4),
           Text(
             title,
-            style: const TextStyle(
-              fontSize: 12,
-              color: AppTheme.textLight,
-            ),
+            style: const TextStyle(fontSize: 12, color: AppTheme.textLight),
           ),
         ],
       ),
@@ -382,11 +407,13 @@ class DashboardPage extends StatelessWidget {
     final names = ['Jennie', 'Jungkook', 'Karina', 'Felix', 'Wonyoung', 'V'];
     final groups = ['BLACKPINK', 'BTS', 'aespa', 'Stray Kids', 'IVE', 'BTS'];
     final scores = [98, 99, 94, 92, 96, 99];
-    // ✅ FIXED: removed const from list with variables
     final colors = [
-      const Color(0xFF6C5CE7), const Color(0xFF00D2D3),
-      const Color(0xFFFF6B6B), const Color(0xFFFFA502),
-      const Color(0xFF6C5CE7), const Color(0xFF00D2D3),
+      const Color(0xFF6C5CE7),
+      const Color(0xFF00D2D3),
+      const Color(0xFFFF6B6B),
+      const Color(0xFFFFA502),
+      const Color(0xFF6C5CE7),
+      const Color(0xFF00D2D3),
     ];
     final images = [
       'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400',
@@ -405,7 +432,6 @@ class DashboardPage extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            // ✅ FIXED
             color: Colors.black.withValues(alpha: 0.08),
             blurRadius: 10,
             offset: const Offset(0, 5),
@@ -418,13 +444,13 @@ class DashboardPage extends StatelessWidget {
             borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
             child: Image.network(
               images[index],
-              height: 100,
+              height: 90,
               width: double.infinity,
               fit: BoxFit.cover,
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(8),
             child: Column(
               children: [
                 Text(
@@ -435,7 +461,7 @@ class DashboardPage extends StatelessWidget {
                   ),
                   overflow: TextOverflow.ellipsis,
                 ),
-                const SizedBox(height: 4),
+                const SizedBox(height: 2),
                 Text(
                   groups[index],
                   style: const TextStyle(
@@ -443,17 +469,17 @@ class DashboardPage extends StatelessWidget {
                     color: AppTheme.textLight,
                   ),
                 ),
-                const SizedBox(height: 6),
+                const SizedBox(height: 4),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(3),
                   child: LinearProgressIndicator(
                     value: scores[index] / 100,
                     backgroundColor: Colors.grey.shade200,
                     valueColor: AlwaysStoppedAnimation<Color>(colors[index]),
-                    minHeight: 6,
+                    minHeight: 4,
                   ),
                 ),
-                const SizedBox(height: 4),
+                const SizedBox(height: 2),
                 Text(
                   '${scores[index]}% hype',
                   style: TextStyle(
@@ -493,7 +519,6 @@ class DashboardPage extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            // ✅ FIXED
             color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 8,
             offset: const Offset(0, 4),
@@ -506,10 +531,7 @@ class DashboardPage extends StatelessWidget {
             flex: 3,
             child: Text(
               name,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-              ),
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
             ),
           ),
           Expanded(

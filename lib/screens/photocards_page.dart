@@ -10,14 +10,8 @@ class PhotocardsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Photocards'),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.filter_list),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {},
-          ),
+          IconButton(icon: const Icon(Icons.filter_list), onPressed: () {}),
+          IconButton(icon: const Icon(Icons.search), onPressed: () {}),
         ],
       ),
       body: GridView.builder(
@@ -37,15 +31,55 @@ class PhotocardsPage extends StatelessWidget {
   }
 
   Widget _buildPhotocard(int index) {
-    final idols = ['Jennie', 'Jungkook', 'Karina', 'Felix', 'Wonyoung', 'V', 'Lisa', 'Jimin'];
-    final groups = ['BLACKPINK', 'BTS', 'aespa', 'Stray Kids', 'IVE', 'BTS', 'BLACKPINK', 'BTS'];
-    final editions = ['Born Pink', 'Proof', 'Girls', 'Maxident', 'After Like', 'Layover', 'Lalisa', 'Face'];
-    final rarities = ['Rare', 'Ultra Rare', 'Common', 'Rare', 'Ultra Rare', 'Common', 'Rare', 'Ultra Rare'];
-    // ✅ FIXED: removed const
+    final idols = [
+      'Jennie',
+      'Jungkook',
+      'Karina',
+      'Felix',
+      'Wonyoung',
+      'V',
+      'Lisa',
+      'Jimin',
+    ];
+    final groups = [
+      'BLACKPINK',
+      'BTS',
+      'aespa',
+      'Stray Kids',
+      'IVE',
+      'BTS',
+      'BLACKPINK',
+      'BTS',
+    ];
+    final editions = [
+      'Born Pink',
+      'Proof',
+      'Girls',
+      'Maxident',
+      'After Like',
+      'Layover',
+      'Lalisa',
+      'Face',
+    ];
+    final rarities = [
+      'Rare',
+      'Ultra Rare',
+      'Common',
+      'Rare',
+      'Ultra Rare',
+      'Common',
+      'Rare',
+      'Ultra Rare',
+    ];
     final rarityColors = [
-      const Color(0xFFFFA502), const Color(0xFF6C5CE7), const Color(0xFF00D2D3),
-      const Color(0xFFFFA502), const Color(0xFF6C5CE7), const Color(0xFF00D2D3),
-      const Color(0xFFFFA502), const Color(0xFF6C5CE7),
+      const Color(0xFFFFA502),
+      const Color(0xFF6C5CE7),
+      const Color(0xFF00D2D3),
+      const Color(0xFFFFA502),
+      const Color(0xFF6C5CE7),
+      const Color(0xFF00D2D3),
+      const Color(0xFFFFA502),
+      const Color(0xFF6C5CE7),
     ];
     final images = [
       'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400',
@@ -64,7 +98,6 @@ class PhotocardsPage extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            // ✅ FIXED
             color: Colors.black.withValues(alpha: 0.08),
             blurRadius: 12,
             offset: const Offset(0, 6),
@@ -88,9 +121,11 @@ class PhotocardsPage extends StatelessWidget {
                   top: 8,
                   right: 8,
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
-                      // ✅ FIXED
                       color: rarityColors[index].withValues(alpha: 0.9),
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -131,7 +166,11 @@ class PhotocardsPage extends StatelessWidget {
                 const SizedBox(height: 6),
                 Row(
                   children: [
-                    const Icon(Icons.album, size: 12, color: AppTheme.primaryPurple),
+                    const Icon(
+                      Icons.album,
+                      size: 12,
+                      color: AppTheme.primaryPurple,
+                    ),
                     const SizedBox(width: 4),
                     Expanded(
                       child: Text(
@@ -150,7 +189,10 @@ class PhotocardsPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
                       decoration: BoxDecoration(
                         color: AppTheme.veryLightPurple,
                         borderRadius: BorderRadius.circular(6),

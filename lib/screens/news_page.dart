@@ -43,12 +43,21 @@ class NewsPage extends StatelessWidget {
       'Two of K-pop\'s biggest companies join forces for a joint album featuring artists from both labels.',
       'The aespa leader becomes the face of a major French fashion house\'s Spring 2025 campaign.',
     ];
-    final categories = ['Tour', 'Solo', 'Debut', 'Awards', 'Industry', 'Fashion'];
-    // ✅ FIXED: removed const
+    final categories = [
+      'Tour',
+      'Solo',
+      'Debut',
+      'Awards',
+      'Industry',
+      'Fashion',
+    ];
     final categoryColors = [
-      const Color(0xFF6C5CE7), const Color(0xFFFF6B6B),
-      const Color(0xFF00D2D3), const Color(0xFFFFA502),
-      const Color(0xFF6C5CE7), const Color(0xFFFF6B6B),
+      const Color(0xFF6C5CE7),
+      const Color(0xFFFF6B6B),
+      const Color(0xFF00D2D3),
+      const Color(0xFFFFA502),
+      const Color(0xFF6C5CE7),
+      const Color(0xFFFF6B6B),
     ];
     final times = ['2h ago', '5h ago', '8h ago', '12h ago', '1d ago', '2d ago'];
     final images = [
@@ -67,7 +76,6 @@ class NewsPage extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            // ✅ FIXED
             color: Colors.black.withValues(alpha: 0.08),
             blurRadius: 12,
             offset: const Offset(0, 6),
@@ -94,9 +102,11 @@ class NewsPage extends StatelessWidget {
                 Row(
                   children: [
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 4,
+                      ),
                       decoration: BoxDecoration(
-                        // ✅ FIXED
                         color: categoryColors[index].withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(6),
                       ),
@@ -110,7 +120,11 @@ class NewsPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 10),
-                    const Icon(Icons.access_time, size: 12, color: AppTheme.textLight),
+                    const Icon(
+                      Icons.access_time,
+                      size: 12,
+                      color: AppTheme.textLight,
+                    ),
                     const SizedBox(width: 4),
                     Text(
                       times[index],
@@ -148,7 +162,10 @@ class NewsPage extends StatelessWidget {
                     TextButton(
                       onPressed: () {},
                       style: TextButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 8,
+                        ),
                         backgroundColor: AppTheme.veryLightPurple,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
